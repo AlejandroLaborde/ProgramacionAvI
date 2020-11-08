@@ -1,0 +1,50 @@
+package reflexion;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+public class Program {
+
+	public static void main(String[] args) {
+
+		Persona p = new Persona();
+		Class c = p.getClass();
+		
+		Field[] fields = c.getFields();
+		
+		for (Field field : fields) {
+			String atributo = field.getName();
+			String a = atributo.replace(atributo.charAt(0), atributo.substring(0, 1).toLowerCase().charAt(0)  );
+			System.out.println(atributo);
+			Method[] methods = c.getMethods();
+			for (Method method : methods) {
+				if(method.getName().equals("Set"+ atributo)) {
+
+					try {
+						Object[] ob = new Object[1];
+						method.invoke(p, ob);
+						
+					} catch (IllegalAccessException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IllegalArgumentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
+			
+
+		}
+		
+		
+		
+		
+
+	}
+
+}

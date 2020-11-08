@@ -1,0 +1,7 @@
+package reflexion;
+
+public class Persona {
+	private nombre;
+	private apellido;
+	private dni;
+}

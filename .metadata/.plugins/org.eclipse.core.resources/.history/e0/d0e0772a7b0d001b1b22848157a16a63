@@ -1,0 +1,18 @@
+package exam;
+
+public class program {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public void reemplazarValor(String nombre, Object nuevoValor) throw 	AtributoNoEncontradoExcepcion{
+	Atributo atributo = buscar(nombre); // busca el atributo
+	if(atributo == null) //no lo encontró
+	throw new AtributoNoEncontradoExcepcion(nombre, nuevoValor); 
+	//se lanza laexcepción
+	atributo.valueOf(nuevoValor);
+	
+	}
+}
